@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>The Cheat Sheet</title>
+
+    <!-- Bootstrap core CSS 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.css')}}"/>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/jumbron.css')}}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/demo.css')}}"/>
+    <link rel="stylesheet"  href="{{ url_for('static', filename = 'css/ladda.min.css')}}"/>
+	
+	<script src="static/js/jquery.js" ></script>
+	<!--script>
+	
+		$(document).ready(function() {
+			$(".submit").click(function() {
+				$(".submit").addClass("loading");
+
+				setTimeout(function() {
+					$(".submit").addClass("hide-loading");
+					// For failed icon just replace ".done" with ".failed"
+					$(".done").addClass("finish");
+				}, 3000);
+
+			setTimeout(function() {
+				$(".submit").removeClass("loading");
+				$(".submit").removeClass("hide-loading");
+				$(".done").removeClass("finish");
+				$(".failed").removeClass("finish");
+			}, 5000);
+		  })
+		});
+</script-->
+  
+      <style>
+	  .text-holder{
+		  color:#red;
+		  text-align:center;
+		  padding-top:40px;
+	   }
+	 .button-holder{
+		 padding-top:100px;
+	  }
+	 .ajax-button{
+		position:relative;
+	  }
+     .blue{
+	    background:skyblue;
+		color:white;
+	 }
+	 .pink{
+	    background:pink;
+		color:white;
+	 }
+  </style>
+  </head>
+
+  
+  <body>
+    <div class="container" style="background:transparent; padding-top:10px;border:solid black 0.07em;">
+      <div class="jumbotron" style="background:url('../static/images/page.jpg');border:solid black 0.07em;">
+        <h1 class="display-3" style="color:#334455; background:#ffffff; font-family: 'Libre Barcode 128 Text', cursive;">The Cheat Sheet</h1>
+        <p class="lead" style="color:#662222;background:#ffffff;">Findout if He/She is cheating on You!</p>
+        <p style="font-variant:small-caps; color:orange;background:#ffffff;">Provide accurate information to get accurate results</p>
+		<p class="lead" style="color:lime;background:#ffffff;"><b>Remember you can always move-on!</b></p>
+      </div>
+
+      <div class="row marketing">
+	    <form action="{{ url_for('index') }}" method="POST" class="row" >
+			<div class="col-lg-6" style="line-height:3px; text-align:center;">
+			  <h4 style="border:solid pink 0.07em; border-radius:3px; font-family:courier new;background:white;" >Your Details:</h4>
+			  <div class="form-control" style="border:solid pink 0.07em;">
+				  <label>Gender :</label>
+				  <select name="p1Gender">
+					  <option>Male</option>
+					  <option>Femle</option>
+				  </select>
+			  </div><br/>
+			  <input style="border:solid pink 0.07em;" type="text" placeholder="Name" class="form-control" name="p1Name"/><br/>
+			  <input style="border:solid pink 0.07em;" type="text" placeholder="Surname" class="form-control" name="p1Surname"/><br/>
+			  <input style="border:solid pink 0.07em;" type="text" placeholder="Date of Birth" class="form-control" name="p1DOB"/><br/>
+			  <input style="border:solid pink 0.07em;" type="text" placeholder="Cellphone Number" class="form-control" name="p1Cell"/><br/>
+			  <input style="border:solid pink 0.07em;" type="text" placeholder="Email (optional)*" class="form-control" name="p1Email"/><br/>
+			  <div class="form-control" style="border:solid pink 0.07em;">
+				  <label>Occupation</label>
+				  <select name="p1Occupation">
+					  <option>Student</option>
+					  <option>Working</option>
+					  <option>Not Working</option>
+				  </select>
+			</div><br/>
+			  <input style="border:solid pink 0.07em;" type="text" placeholder="Where were you born? (Area name)" class="form-control" name="p1PlaceOfBirth"/><br/>
+			  <input style="border:solid pink 0.07em;" type="text" placeholder="Where are you Now? (Area name)" class="form-control" name="p1CurrentPlace"/><br/>
+			</div>
+			<div class="col-lg-6" style="line-height:3px; text-align:center;">
+			  <h4 style="border:solid skyblue 0.07em; border-radius:3px; font-family:courier new;background:white;" >Partner Details:</h4>
+			  <div class="form-control" style="border:solid skyblue 0.07em;">
+				  <label>Gender :</label>
+				  <select name="p2Gender">
+					  <option>Male</option>
+					  <option>Femle</option>
+				  </select>
+			  </div><br/>
+			  <input type="text" placeholder="Name" class="form-control" name="p2Name" style="border:solid skyblue 0.07em;"/><br/>
+			  <input type="text" placeholder="Surname" class="form-control" name="p2Surname" style="border:solid skyblue 0.07em;"/><br/>
+			  <input type="text" placeholder="Date of Birth" class="form-control" name="p2DOB" style="border:solid skyblue 0.07em;"/><br/>
+			  <input type="text" placeholder="Cellphone Number" class="form-control" name="p2Cell" style="border:solid skyblue 0.07em;"/><br/>
+			  <input type="text" placeholder="Email (optional)*" class="form-control" name="p2Email"/><br/>
+			  <div class="form-control" style="border:solid skyblue 0.07em;">
+				  <label>Occupation</label>
+				  <select name="p2Occupation">
+					  <option>Student</option>
+					  <option>Working</option>
+					  <option>Not Working</option>
+				  </select>
+			  </div><br/>
+			  <input style="border:solid skyblue 0.07em;" type="text" placeholder="Where were they born? (Area name)" class="form-control" name="p2PlaceOfBirth"/><br/>
+			  <input style="border:solid skyblue 0.07em;" type="text" placeholder="Where are they Now? (Area name)" class="form-control " name="p2CurrentPlace"/><br/>
+			</div>
+			<div class="col-lg-12">
+				<label>How Long Have You Been Together?</label>
+				<select name="relTime1">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+					<option>9</option>
+					<option>10</option>
+					<option>More than 10</option>
+				</select>
+				<select name="relTime2">
+					<option>Day(s)</option>
+					<option>Week(s)</option>
+					<option>Month(s)</option>
+					<option>Year(s)</option>
+				</select>
+			</div>
+			<div class="col-lg-12">
+			<br/>
+			<section class="progress-demo">
+				<button id="sub"  style="width:100%;padding:0px; height:30px; background:#ffffff; color:#662222" class="ladda-button" data-style="expand-down">Check for Cheat</button>
+			</section>
+			
+			</div>
+		</form>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; Cheat Sheet 2017</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="static/js/spin.min.js"></script>
+	<script src="static/js/ladda.min.js"></script>
+
+		<script>
+  
+			// Bind normal buttons
+			//Ladda.bind( '.button-demo button', { timeout: 0 } );
+			//Ladda.bind('button[type=submit]' );
+			// Bind progress buttons and simulate loading progress
+			Ladda.bind( '.progress-demo button', {
+				callback: function( instance ) {
+				    
+					var progress = 0;
+					var interval = setInterval( function() {
+						progress = Math.min( progress + Math.random() * 0.1, 1 );
+						instance.setProgress( progress );
+
+						if( progress === 1 ) {
+							instance.stop();
+							clearInterval( interval );
+						}
+					}, 200 );
+					
+					var btn = document.getElementById("sub");
+					btn.innerHTML = "Checking For Cheat!!"
+					btn.setAttribute('style','width:100%;padding:0px; height:30px;');
+					
+				}
+			} );
+
+			// You can control loading explicitly using the JavaScript API
+			// as outlined below:
+
+			// var l = Ladda.create( document.querySelector( 'button' ) );
+			// l.start();
+			// l.stop();
+			// l.toggle();
+			// l.isLoading();
+			// l.setProgress( 0-1 );
+			 
+				 
+	
+		</script>
+  </body>
+</html>
